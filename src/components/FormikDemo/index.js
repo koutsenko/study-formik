@@ -19,23 +19,26 @@ const useFormik = (props) => {
     }));
   };
 
-  return { values, handleChange };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    await props.onSubmit(values);
+  };
+
+  return { values, handleChange, handleSubmit };
 };
 
 const FormikDemo = () => {
-  const { values, handleChange } = useFormik({
+  const { values, handleChange, handleSubmit } = useFormik({
     initialValues: {
       login: "",
       password: "",
     },
+    onSubmit: async () => {
+      await delay(defaultDelay);
+      alert(JSON.stringify(values, null, 2));
+    },
   });
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    await delay(defaultDelay);
-    alert(JSON.stringify(values, null, 2));
-  };
 
   return (
     <>
