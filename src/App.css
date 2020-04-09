@@ -16,3 +16,10 @@
 .App-link {
   color: #61dafb;
 }
+
+.form-container {
+  color: black;
+  background-color: white;
+  padding: 1em;
+  width: 20em;
+}

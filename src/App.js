@@ -1,10 +1,15 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+import FormikDemo from "./components/FormikDemo";
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <div className="form-container">
+          <h4>Formik demo</h4>
+          <FormikDemo />
+        </div>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
