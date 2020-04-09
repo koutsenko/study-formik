@@ -6,11 +6,8 @@ const defaultDelay = 1000;
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-const FormikDemo = () => {
-  const [values, setValues] = useState({
-    login: "",
-    password: "",
-  });
+const useFormik = (props) => {
+  const [values, setValues] = useState(props.initialValues || {});
 
   const handleChange = (name) => (event) => {
     event.preventDefault();
@@ -21,6 +18,17 @@ const FormikDemo = () => {
       [name]: event.target.value,
     }));
   };
+
+  return { values, handleChange };
+};
+
+const FormikDemo = () => {
+  const { values, handleChange } = useFormik({
+    initialValues: {
+      login: "",
+      password: "",
+    },
+  });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
