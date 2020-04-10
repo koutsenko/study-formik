@@ -20,6 +20,16 @@ const FormikDemo = () => (
           <label htmlFor="login">Логин</label>
           <Field name="login" placeholder="Login" />
           <br />
+          <label htmlFor="login">Тоже логин</label>
+          <Field name="login" placeholder="Login also">
+            {({ field, form }) => (
+              <>
+                <span> ***</span>
+                <input {...field} />
+              </>
+            )}
+          </Field>
+          <br />
           <label htmlFor="password">Пароль</label>
           <Field name="password" placeholder="Password" />
           <br />
