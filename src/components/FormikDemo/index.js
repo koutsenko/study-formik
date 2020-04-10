@@ -1,5 +1,6 @@
 import React from "react";
-import { Formik, Field, Form, useField } from "formik";
+import { Formik, Field, Form, useField, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 import Debug from "../Debug";
 
@@ -8,43 +9,38 @@ const defaultDelay = 1000;
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const MyInput = (props) => {
-  const [field, meta] = useField(props);
+  const [field] = useField(props);
 
-  return (
-    <>
-      <input {...field} {...props} />
-    </>
-  );
+  return <input {...field} {...props} />;
 };
+
+const Fieldset = ({ name, label, ...rest }) => (
+  <>
+    <label htmlFor={name}>{label}</label>
+    <MyInput id={name} name={name} {...rest} />
+    <ErrorMessage name={name} />
+  </>
+);
+
+const Schema = Yup.object().shape({
+  login: Yup.string().email("Invalid email address").required("Required"),
+  password: Yup.string().required("Required"),
+});
 
 const FormikDemo = () => (
   <>
     <Formik
       initialValues={{ login: "", password: "" }}
+      validationSchema={Schema}
       onSubmit={async (values) => {
         await delay(defaultDelay);
         alert(JSON.stringify(values, null, 2));
       }}
       render={(props) => (
         <Form>
-          <label htmlFor="login">Логин</label>
-          <Field name="login" placeholder="Login" />
+          <Fieldset name="login" label="Логин" placeholder="foo@bar.org" />
           <br />
-          <label htmlFor="login">Тоже логин</label>
-          <Field name="login" placeholder="Login also">
-            {({ field, form }) => (
-              <>
-                <span> ***</span>
-                <input {...field} />
-              </>
-            )}
-          </Field>
-          <br />
-          <label htmlFor="login">И это логин</label>
-          <MyInput name="login" placeholder="Login also too" />
-          <br />
-          <label htmlFor="password">Пароль</label>
-          <Field name="password" placeholder="Password" />
+          <Fieldset name="password" label="Пароль" />
           <br />
           <input type="submit" value="Войти" />
           <Debug {...props} />
