@@ -1,11 +1,21 @@
 import React from "react";
-import { Formik, Field, Form } from "formik";
+import { Formik, Field, Form, useField } from "formik";
 
 import Debug from "../Debug";
 
 const defaultDelay = 1000;
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+const MyInput = (props) => {
+  const [field, meta] = useField(props);
+
+  return (
+    <>
+      <input {...field} {...props} />
+    </>
+  );
+};
 
 const FormikDemo = () => (
   <>
@@ -29,6 +39,9 @@ const FormikDemo = () => (
               </>
             )}
           </Field>
+          <br />
+          <label htmlFor="login">И это логин</label>
+          <MyInput name="login" placeholder="Login also too" />
           <br />
           <label htmlFor="password">Пароль</label>
           <Field name="password" placeholder="Password" />
