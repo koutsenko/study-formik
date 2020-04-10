@@ -22,32 +22,42 @@ const Fieldset = ({ name, label, ...rest }) => (
   </>
 );
 
+/**
+ * Note that only first validation error will be shown.
+ */
 const Schema = Yup.object().shape({
   login: Yup.string().email("Invalid email address").required("Required"),
   password: Yup.string().required("Required"),
 });
 
-const FormikDemo = () => (
-  <>
-    <Formik
-      initialValues={{ login: "", password: "" }}
-      validationSchema={Schema}
-      onSubmit={async (values) => {
-        await delay(defaultDelay);
-        alert(JSON.stringify(values, null, 2));
-      }}
-      render={(props) => (
-        <Form>
-          <Fieldset name="login" label="Логин" placeholder="foo@bar.org" />
-          <br />
-          <Fieldset name="password" label="Пароль" />
-          <br />
-          <input type="submit" value="Войти" />
-          <Debug {...props} />
-        </Form>
-      )}
-    />
-  </>
-);
+const FormikDemo = () => {
+  /**
+   * Read docs https://jaredpalmer.com/formik/docs/guides/form-submission
+   */
+  const submit = async (values) => {
+    await delay(defaultDelay);
+    alert(JSON.stringify(values, null, 2));
+  };
+
+  return (
+    <>
+      <Formik
+        initialValues={{ login: "", password: "" }}
+        validationSchema={Schema}
+        onSubmit={submit}
+        render={(props) => (
+          <Form>
+            <Fieldset name="login" label="Логин" placeholder="foo@bar.org" />
+            <br />
+            <Fieldset name="password" label="Пароль" />
+            <br />
+            <input type="submit" value="Войти" />
+            <Debug {...props} />
+          </Form>
+        )}
+      />
+    </>
+  );
+};
 
 export default FormikDemo;
