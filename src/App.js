@@ -6,8 +6,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="form-container">
-          <h4>Formik demo</h4>
+        <div className="App-content">
           <FormikDemo />
         </div>
         <p>

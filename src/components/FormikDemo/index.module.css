@@ -1,0 +1,65 @@
+.credentials {
+  text-align: left;
+  display: inline-block;
+  padding: 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  color: white;
+  margin: 5px;
+}
+
+.formikContainer {
+  margin-top: 1em;
+  border: 1px dashed gray;
+}
+
+/* Стили элементов формы */
+
+.form {
+  text-align: left;
+  position: relative;
+}
+
+.label {
+  width: 110px;
+  display: inline-block;
+  text-align: right;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+
+.fieldset {
+  display: inline-block;
+  margin-top: 5px;
+  text-align: left;
+  height: 45px;
+}
+
+.submit {
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 110px;
+}
+
+.error {
+  color: red;
+  margin-left: 110px;
+  white-space: nowrap;
+  font-size: 13px;
+}
+
+.loader {
+  position: absolute;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  height: 100%;
+  top: 0;
+}
+
+.loader span {
+  text-align: center;
+  width: 100%;
+  display: inline-block;
+  margin-top: 50px;
+}

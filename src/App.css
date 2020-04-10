@@ -9,7 +9,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* font-size: calc(5px + 2vmin); */
   color: white;
 }
 
@@ -17,9 +17,9 @@
   color: #61dafb;
 }
 
-.form-container {
+.App-content {
   color: black;
   background-color: white;
   padding: 1em;
-  width: 20em;
+  min-width: 25em;
 }

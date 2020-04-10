@@ -1,9 +1,11 @@
 .debug {
   display: inline-block;
   font-family: monospace;
-  font-size: 15px;
-  margin-top: 5em;
   text-align: left;
   white-space: pre;
-  width: 100%;
+  position: fixed;
+  top: 0;
+  color: white;
+  left: 0;
+  padding: 10px;
 }
