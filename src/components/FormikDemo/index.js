@@ -15,7 +15,7 @@ const FormikDemo = () => (
         await delay(defaultDelay);
         alert(JSON.stringify(values, null, 2));
       }}
-      render={({ values }) => (
+      render={(props) => (
         <Form>
           <label htmlFor="login">Логин</label>
           <Field name="login" placeholder="Login" />
@@ -24,7 +24,7 @@ const FormikDemo = () => (
           <Field name="password" placeholder="Password" />
           <br />
           <input type="submit" value="Войти" />
-          <Debug {...values} />
+          <Debug {...props} />
         </Form>
       )}
     />
